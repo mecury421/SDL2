@@ -3,7 +3,7 @@ project(SDL C)
 
 # define the correct library root for the detected platform
 if (WIN32)
-    if (CMAKE_SIZE_VOID_P EQUAL 8)
+    if (CMAKE_SIZEOF_VOID_P EQUAL 8)
         set (SDL_LIB_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/lib/x64")
     else ()
         set (SDL_LIB_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/lib/x86")
@@ -17,7 +17,7 @@ set (SDL_DLL_PATH "${SDL_LIB_ROOT}/SDL2.dll" PARENT_SCOPE)
 
 # define the interface library (to emulate a compiled library)
 add_library(sdl2 INTERFACE)
-target_link_libraries(sdl2 INTERFACE "${SDL_LIB_ROOT}/SDL2.lib")
+target_link_libraries(sdl2 INTERFACE "${SDL_LIB_ROOT}/SDL2.lib" "${SDL_LIB_ROOT}/SDL2test.lib")
 target_include_directories(sdl2 INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # define the optional main library
