@@ -13,7 +13,7 @@ else (WIN32)
 endif (WIN32)
 
 # for use by the calling project, used to automate copying of the DLL to the correct place
-set (SDL_DLL_PATH "${SDL_LIB_ROOT}/SDL2.dll" PARENT_SCOPE)
+set(SDL_DLL_PATH "${SDL_LIB_ROOT}/SDL2.dll" CACHE STRING "" FORCE)
 
 # define the interface library (to emulate a compiled library)
 add_library(sdl2 INTERFACE)
